@@ -179,7 +179,7 @@ footer {
 
         <div class="section-header">
             <h2>الشركات</h2>
-            <button>+ إضافة شركة</button>
+            <button onclick="addCompany()">+ إضافة شركة</button>
         </div>
 
         <table>
@@ -229,4 +229,26 @@ footer {
 </footer>
 
 </body>
+   <script>
+function addCompany() {
+    const companyName = prompt("أدخل اسم الشركة:");
+
+    if (companyName && companyName.trim() !== "") {
+        const table = document.querySelector("tbody");
+
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${companyName}</td>
+            <td>0 ريال</td>
+            <td>0 ريال</td>
+            <td class="balance">0 ريال</td>
+        `;
+
+        table.appendChild(row);
+
+        alert("تمت إضافة الشركة بنجاح");
+    }
+}
+</script> 
 </html>
