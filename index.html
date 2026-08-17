@@ -19,6 +19,79 @@ body {
     color: #222;
 }
 
+/* ================= LOGIN ================= */
+
+#loginPage {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #17365d;
+    padding: 20px;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.login-box h1 {
+    color: #17365d;
+    margin-bottom: 10px;
+}
+
+.login-box p {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    text-align: right;
+}
+
+.login-box input:focus {
+    outline: none;
+    border-color: #17365d;
+}
+
+.login-box button {
+    width: 100%;
+    border: none;
+    background: #17365d;
+    color: white;
+    padding: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-box button:hover {
+    background: #0f2744;
+}
+
+#errorMessage {
+    color: #c0392b;
+    margin-top: 15px;
+    display: none;
+}
+
+/* ================= SYSTEM ================= */
+
+#systemPage {
+    display: none;
+}
+
 header {
     background: #17365d;
     color: white;
@@ -149,6 +222,45 @@ footer {
 
 <body>
 
+<!-- ================= LOGIN PAGE ================= -->
+
+<div id="loginPage">
+
+    <div class="login-box">
+
+        <h1>مهيم</h1>
+
+        <p>نظام إدارة حسابات الشركات</p>
+
+        <input
+            type="text"
+            id="username"
+            placeholder="اسم المستخدم"
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="كلمة المرور"
+        >
+
+        <button onclick="login()">
+            تسجيل الدخول
+        </button>
+
+        <div id="errorMessage">
+            اسم المستخدم أو كلمة المرور غير صحيحة
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= SYSTEM PAGE ================= -->
+
+<div id="systemPage">
+
 <header>
     <h1>نظام إدارة حسابات الشركات</h1>
     <p>إدارة المشتريات والسداد والأرصدة</p>
@@ -228,12 +340,39 @@ footer {
     © 2026 — نظام إدارة حسابات الشركات
 </footer>
 
-</body>
-   <script>
+</div>
+
+
+<script>
+
+/* ================= LOGIN ================= */
+
+function login() {
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if (username === "admin" && password === "1234") {
+
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("systemPage").style.display = "block";
+
+    } else {
+
+        document.getElementById("errorMessage").style.display = "block";
+
+    }
+}
+
+
+/* ================= ADD COMPANY ================= */
+
 function addCompany() {
+
     const companyName = prompt("أدخل اسم الشركة:");
 
     if (companyName && companyName.trim() !== "") {
+
         const table = document.getElementById("companiesTable");
 
         const row = document.createElement("tr");
@@ -250,5 +389,8 @@ function addCompany() {
         alert("تمت إضافة الشركة بنجاح");
     }
 }
-</script> 
+
+</script>
+
+</body>
 </html>
