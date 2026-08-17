@@ -1,1 +1,232 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>إدارة حسابات الشركات</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f8;
+    color: #222;
+}
+
+header {
+    background: #17365d;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+header p {
+    margin-top: 8px;
+    opacity: 0.85;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 25px auto;
+    padding: 0 15px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.card h3 {
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.card strong {
+    font-size: 24px;
+    color: #17365d;
+}
+
+.section {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    color: #17365d;
+}
+
+button {
+    border: none;
+    background: #17365d;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background: #0f2744;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 13px;
+    border-bottom: 1px solid #eee;
+    text-align: right;
+}
+
+th {
+    background: #f4f6f8;
+    color: #555;
+}
+
+.balance {
+    font-weight: bold;
+    color: #c0392b;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #777;
+    font-size: 13px;
+}
+
+@media (max-width: 700px) {
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 600px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>نظام إدارة حسابات الشركات</h1>
+    <p>إدارة المشتريات والسداد والأرصدة</p>
+</header>
+
+<div class="container">
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>عدد الشركات</h3>
+            <strong>3</strong>
+        </div>
+
+        <div class="card">
+            <h3>إجمالي المشتريات</h3>
+            <strong>25,000 ريال</strong>
+        </div>
+
+        <div class="card">
+            <h3>إجمالي المديونية</h3>
+            <strong>12,500 ريال</strong>
+        </div>
+
+    </div>
+
+    <div class="section">
+
+        <div class="section-header">
+            <h2>الشركات</h2>
+            <button>+ إضافة شركة</button>
+        </div>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>الشركة</th>
+                    <th>المشتريات</th>
+                    <th>السداد</th>
+                    <th>الرصيد</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>شركة المثال الأولى</td>
+                    <td>10,000 ريال</td>
+                    <td>6,000 ريال</td>
+                    <td class="balance">4,000 ريال</td>
+                </tr>
+
+                <tr>
+                    <td>شركة المثال الثانية</td>
+                    <td>8,000 ريال</td>
+                    <td>3,000 ريال</td>
+                    <td class="balance">5,000 ريال</td>
+                </tr>
+
+                <tr>
+                    <td>شركة المثال الثالثة</td>
+                    <td>7,000 ريال</td>
+                    <td>3,500 ريال</td>
+                    <td class="balance">3,500 ريال</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 — نظام إدارة حسابات الشركات
+</footer>
+
+</body>
+</html>
