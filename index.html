@@ -193,7 +193,7 @@ footer {
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody id="companiesTable">
 
                 <tr>
                     <td>شركة المثال الأولى</td>
@@ -234,7 +234,7 @@ function addCompany() {
     const companyName = prompt("أدخل اسم الشركة:");
 
     if (companyName && companyName.trim() !== "") {
-        const table = document.querySelector("tbody");
+        const table = document.getElementById("companiesTable");
 
         const row = document.createElement("tr");
 
