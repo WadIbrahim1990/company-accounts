@@ -108,6 +108,16 @@ header p {
     opacity: 0.85;
 }
 
+header button {
+    margin-top: 15px;
+    background: white;
+    color: #17365d;
+}
+
+header button:hover {
+    background: #e8edf2;
+}
+
 .container {
     max-width: 1100px;
     margin: 25px auto;
@@ -262,11 +272,17 @@ footer {
 <div id="systemPage">
 
 <header>
+
     <h1>نظام إدارة حسابات الشركات</h1>
+
     <p>إدارة المشتريات والسداد والأرصدة</p>
 
-    <button onclick="logout()">تسجيل الخروج</button>
+    <button onclick="logout()">
+        تسجيل الخروج
+    </button>
+
 </header>
+
 
 <div class="container">
 
@@ -289,23 +305,33 @@ footer {
 
     </div>
 
+
     <div class="section">
 
         <div class="section-header">
+
             <h2>الشركات</h2>
-            <button onclick="addCompany()">+ إضافة شركة</button>
+
+            <button onclick="addCompany()">
+                + إضافة شركة
+            </button>
+
         </div>
+
 
         <table>
 
             <thead>
+
                 <tr>
                     <th>الشركة</th>
                     <th>المشتريات</th>
                     <th>السداد</th>
                     <th>الرصيد</th>
                 </tr>
+
             </thead>
+
 
             <tbody id="companiesTable">
 
@@ -338,6 +364,7 @@ footer {
 
 </div>
 
+
 <footer>
     © 2026 — نظام إدارة حسابات الشركات
 </footer>
@@ -346,8 +373,6 @@ footer {
 
 
 <script>
-
-/* ================= LOGIN ================= */
 
 /* ================= LOGIN ================= */
 
@@ -389,7 +414,10 @@ window.onload = function () {
         document.getElementById("systemPage").style.display = "none";
 
     }
+
 };
+
+
 /* ================= ADD COMPANY ================= */
 
 function addCompany() {
@@ -412,28 +440,7 @@ function addCompany() {
         table.appendChild(row);
 
         alert("تمت إضافة الشركة بنجاح");
-    }
-}
-function addCompany() {
 
-    const companyName = prompt("أدخل اسم الشركة:");
-
-    if (companyName && companyName.trim() !== "") {
-
-        const table = document.getElementById("companiesTable");
-
-        const row = document.createElement("tr");
-
-        row.innerHTML = `
-            <td>${companyName}</td>
-            <td>0 ريال</td>
-            <td>0 ريال</td>
-            <td class="balance">0 ريال</td>
-        `;
-
-        table.appendChild(row);
-
-        alert("تمت إضافة الشركة بنجاح");
     }
 }
 
@@ -448,7 +455,6 @@ function logout() {
     document.getElementById("loginPage").style.display = "flex";
 
 }
-
 
 </script>
 
