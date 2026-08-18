@@ -264,6 +264,8 @@ footer {
 <header>
     <h1>نظام إدارة حسابات الشركات</h1>
     <p>إدارة المشتريات والسداد والأرصدة</p>
+
+    <button onclick="logout()">تسجيل الخروج</button>
 </header>
 
 <div class="container">
@@ -412,7 +414,42 @@ function addCompany() {
         alert("تمت إضافة الشركة بنجاح");
     }
 }
+function addCompany() {
 
+    const companyName = prompt("أدخل اسم الشركة:");
+
+    if (companyName && companyName.trim() !== "") {
+
+        const table = document.getElementById("companiesTable");
+
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${companyName}</td>
+            <td>0 ريال</td>
+            <td>0 ريال</td>
+            <td class="balance">0 ريال</td>
+        `;
+
+        table.appendChild(row);
+
+        alert("تمت إضافة الشركة بنجاح");
+    }
+}
+
+
+/* ================= LOGOUT ================= */
+
+function logout() {
+
+    localStorage.removeItem("mahimmLoggedIn");
+
+    document.getElementById("systemPage").style.display = "none";
+    document.getElementById("loginPage").style.display = "flex";
+
+}
+
+</script>
 </script>
 
 </body>
