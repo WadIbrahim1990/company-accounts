@@ -347,12 +347,17 @@ footer {
 
 /* ================= LOGIN ================= */
 
+/* ================= LOGIN ================= */
+
 function login() {
 
-    const username = document.getElementById("username").value;
+    const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value;
 
     if (username === "admin" && password === "1234") {
+
+        // حفظ حالة تسجيل الدخول
+        localStorage.setItem("mahimmLoggedIn", "true");
 
         document.getElementById("loginPage").style.display = "none";
         document.getElementById("systemPage").style.display = "block";
@@ -365,6 +370,24 @@ function login() {
 }
 
 
+/* ================= CHECK LOGIN ================= */
+
+window.onload = function () {
+
+    const loggedIn = localStorage.getItem("mahimmLoggedIn");
+
+    if (loggedIn === "true") {
+
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("systemPage").style.display = "block";
+
+    } else {
+
+        document.getElementById("loginPage").style.display = "flex";
+        document.getElementById("systemPage").style.display = "none";
+
+    }
+};
 /* ================= ADD COMPANY ================= */
 
 function addCompany() {
