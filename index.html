@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>إدارة حسابات الشركات</title>
+<title>مهيم - إدارة حسابات الشركات</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -18,6 +19,7 @@ body {
     background: #f4f6f8;
     color: #222;
 }
+
 
 /* ================= LOGIN ================= */
 
@@ -86,6 +88,7 @@ body {
     display: none;
 }
 
+
 /* ================= SYSTEM ================= */
 
 #systemPage {
@@ -118,11 +121,17 @@ header button:hover {
     background: #e8edf2;
 }
 
+
+/* ================= CONTAINER ================= */
+
 .container {
     max-width: 1100px;
     margin: 25px auto;
     padding: 0 15px;
 }
+
+
+/* ================= CARDS ================= */
 
 .cards {
     display: grid;
@@ -149,6 +158,9 @@ header button:hover {
     color: #17365d;
 }
 
+
+/* ================= SECTION ================= */
+
 .section {
     background: white;
     padding: 20px;
@@ -167,6 +179,9 @@ header button:hover {
     color: #17365d;
 }
 
+
+/* ================= BUTTON ================= */
+
 button {
     border: none;
     background: #17365d;
@@ -181,12 +196,16 @@ button:hover {
     background: #0f2744;
 }
 
+
+/* ================= TABLE ================= */
+
 table {
     width: 100%;
     border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     padding: 13px;
     border-bottom: 1px solid #eee;
     text-align: right;
@@ -197,10 +216,63 @@ th {
     color: #555;
 }
 
+
+/* ================= COMPANY LINK ================= */
+
+.company-link {
+    color: #17365d;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.company-link:hover {
+    text-decoration: underline;
+}
+
+
+/* ================= BALANCE ================= */
+
 .balance {
     font-weight: bold;
     color: #c0392b;
 }
+
+
+/* ================= COMPANY PAGE ================= */
+
+#companyPage {
+    display: none;
+}
+
+.company-title {
+    color: #17365d;
+    margin-bottom: 5px;
+}
+
+.company-subtitle {
+    color: #777;
+    margin-bottom: 20px;
+}
+
+
+/* ================= COMPANY CARDS ================= */
+
+.company-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+
+/* ================= BACK BUTTON ================= */
+
+.back-button {
+    margin-bottom: 20px;
+}
+
+
+/* ================= FOOTER ================= */
 
 footer {
     text-align: center;
@@ -209,9 +281,16 @@ footer {
     font-size: 13px;
 }
 
+
+/* ================= MOBILE ================= */
+
 @media (max-width: 700px) {
 
     .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .company-cards {
         grid-template-columns: 1fr;
     }
 
@@ -226,13 +305,19 @@ footer {
     header h1 {
         font-size: 20px;
     }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- ================= LOGIN PAGE ================= -->
+
+<!-- ================================================= -->
+<!-- LOGIN PAGE -->
+<!-- ================================================= -->
 
 <div id="loginPage">
 
@@ -267,7 +352,10 @@ footer {
 </div>
 
 
-<!-- ================= SYSTEM PAGE ================= -->
+
+<!-- ================================================= -->
+<!-- SYSTEM PAGE -->
+<!-- ================================================= -->
 
 <div id="systemPage">
 
@@ -284,125 +372,324 @@ footer {
 </header>
 
 
-<div class="container">
 
-    <div class="cards">
+<!-- ================================================= -->
+<!-- COMPANIES PAGE -->
+<!-- ================================================= -->
 
-        <div class="card">
-            <h3>عدد الشركات</h3>
-            <strong id="companiesCount">0</strong>
+<div id="companiesPage">
+
+    <div class="container">
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>عدد الشركات</h3>
+
+                <strong id="companiesCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>إجمالي المشتريات</h3>
+
+                <strong>
+                    25,000 ريال
+                </strong>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>إجمالي المديونية</h3>
+
+                <strong>
+                    12,500 ريال
+                </strong>
+
+            </div>
+
         </div>
 
-        <div class="card">
-            <h3>إجمالي المشتريات</h3>
-            <strong>25,000 ريال</strong>
+
+
+        <div class="section">
+
+            <div class="section-header">
+
+                <h2>
+                    الشركات
+                </h2>
+
+                <button onclick="addCompany()">
+                    + إضافة شركة
+                </button>
+
+            </div>
+
+
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            الشركة
+                        </th>
+
+                        <th>
+                            المشتريات
+                        </th>
+
+                        <th>
+                            السداد
+                        </th>
+
+                        <th>
+                            الرصيد
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+
+                <tbody id="companiesTable">
+
+                </tbody>
+
+            </table>
+
         </div>
-
-        <div class="card">
-            <h3>إجمالي المديونية</h3>
-            <strong>12,500 ريال</strong>
-        </div>
-
-    </div>
-
-
-    <div class="section">
-
-        <div class="section-header">
-
-            <h2>الشركات</h2>
-
-            <button onclick="addCompany()">
-                + إضافة شركة
-            </button>
-
-        </div>
-
-
-        <table>
-
-            <thead>
-
-                <tr>
-                    <th>الشركة</th>
-                    <th>المشتريات</th>
-                    <th>السداد</th>
-                    <th>الرصيد</th>
-                </tr>
-
-            </thead>
-
-
-            <tbody id="companiesTable"></tbody>
-
-        </table>
 
     </div>
 
 </div>
+
+
+
+<!-- ================================================= -->
+<!-- COMPANY FILE -->
+<!-- ================================================= -->
+
+<div id="companyPage">
+
+    <div class="container">
+
+
+        <button
+            class="back-button"
+            onclick="showCompanies()"
+        >
+            ← العودة إلى الشركات
+        </button>
+
+
+
+        <div class="section">
+
+            <h2
+                id="companyName"
+                class="company-title"
+            >
+                اسم الشركة
+            </h2>
+
+
+            <p class="company-subtitle">
+                ملف الشركة
+            </p>
+
+
+
+            <div class="company-cards">
+
+
+                <div class="card">
+
+                    <h3>
+                        إجمالي المشتريات
+                    </h3>
+
+                    <strong id="companyPurchases">
+                        0 ريال
+                    </strong>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <h3>
+                        إجمالي السداد
+                    </h3>
+
+                    <strong id="companyPayments">
+                        0 ريال
+                    </strong>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <h3>
+                        الرصيد الحالي
+                    </h3>
+
+                    <strong
+                        id="companyBalance"
+                        class="balance"
+                    >
+                        0 ريال
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="section">
+
+                <h2>
+                    سجل العمليات
+                </h2>
+
+                <p style="margin-top:15px;color:#777;">
+                    لا توجد عمليات مسجلة حاليًا.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
 
 
 <footer>
+
     © 2026 — نظام إدارة حسابات الشركات
+
 </footer>
 
+
 </div>
+
 
 
 <script>
 
-/* ================= LOGIN ================= */
+
+/* ================================================= */
+/* LOGIN */
+/* ================================================= */
 
 function login() {
 
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value;
+    const username =
+        document.getElementById("username").value.trim();
 
-    if (username === "admin" && password === "1234") {
+    const password =
+        document.getElementById("password").value;
 
-        localStorage.setItem("mahimmLoggedIn", "true");
 
-        document.getElementById("loginPage").style.display = "none";
-        document.getElementById("systemPage").style.display = "block";
+    if (
+        username === "admin" &&
+        password === "1234"
+    ) {
 
-        loadCompanies();
+        localStorage.setItem(
+            "mahimmLoggedIn",
+            "true"
+        );
+
+
+        document.getElementById("loginPage").style.display =
+            "none";
+
+
+        document.getElementById("systemPage").style.display =
+            "block";
+
+
+        showCompanies();
+
 
     } else {
 
-        document.getElementById("errorMessage").style.display = "block";
+        document.getElementById("errorMessage").style.display =
+            "block";
 
     }
+
 }
 
 
-/* ================= CHECK LOGIN ================= */
+
+/* ================================================= */
+/* CHECK LOGIN */
+/* ================================================= */
 
 window.onload = function () {
 
-    const loggedIn = localStorage.getItem("mahimmLoggedIn");
+    const loggedIn =
+        localStorage.getItem("mahimmLoggedIn");
+
 
     if (loggedIn === "true") {
 
-        document.getElementById("loginPage").style.display = "none";
-        document.getElementById("systemPage").style.display = "block";
+        document.getElementById("loginPage").style.display =
+            "none";
 
-        loadCompanies();
+
+        document.getElementById("systemPage").style.display =
+            "block";
+
+
+        showCompanies();
+
 
     } else {
 
-        document.getElementById("loginPage").style.display = "flex";
-        document.getElementById("systemPage").style.display = "none";
+        document.getElementById("loginPage").style.display =
+            "flex";
+
+
+        document.getElementById("systemPage").style.display =
+            "none";
 
     }
 
 };
 
 
-/* ================= INITIAL COMPANIES ================= */
+
+/* ================================================= */
+/* INITIAL COMPANIES */
+/* ================================================= */
 
 function initializeCompanies() {
 
-    const existingCompanies = localStorage.getItem("mahimmCompanies");
+    const existingCompanies =
+        localStorage.getItem("mahimmCompanies");
+
 
     if (!existingCompanies) {
 
@@ -428,67 +715,141 @@ function initializeCompanies() {
 
         ];
 
+
         localStorage.setItem(
             "mahimmCompanies",
             JSON.stringify(companies)
         );
+
     }
+
 }
 
 
-/* ================= LOAD COMPANIES ================= */
+
+/* ================================================= */
+/* LOAD COMPANIES */
+/* ================================================= */
 
 function loadCompanies() {
 
     initializeCompanies();
 
+
     const companies =
-        JSON.parse(localStorage.getItem("mahimmCompanies")) || [];
+        JSON.parse(
+            localStorage.getItem("mahimmCompanies")
+        ) || [];
+
 
     const table =
         document.getElementById("companiesTable");
 
+
     table.innerHTML = "";
 
-    companies.forEach(function(company) {
+
+    companies.forEach(function(company, index) {
 
         const balance =
-            company.purchases - company.payments;
+            company.purchases -
+            company.payments;
+
 
         const row =
             document.createElement("tr");
 
+
         row.innerHTML = `
-            <td>${company.name}</td>
-            <td>${company.purchases.toLocaleString()} ريال</td>
-            <td>${company.payments.toLocaleString()} ريال</td>
-            <td class="balance">
-                ${balance.toLocaleString()} ريال
+
+            <td>
+
+                <span
+                    class="company-link"
+                    onclick="openCompany(${index})"
+                >
+                    ${company.name}
+                </span>
+
             </td>
+
+            <td>
+                ${company.purchases.toLocaleString()}
+                ريال
+            </td>
+
+            <td>
+                ${company.payments.toLocaleString()}
+                ريال
+            </td>
+
+            <td class="balance">
+
+                ${balance.toLocaleString()}
+                ريال
+
+            </td>
+
         `;
+
 
         table.appendChild(row);
 
     });
 
+
     document.getElementById("companiesCount").textContent =
         companies.length;
+
 }
 
 
-/* ================= ADD COMPANY ================= */
+
+/* ================================================= */
+/* SHOW COMPANIES */
+/* ================================================= */
+
+function showCompanies() {
+
+    document.getElementById("companiesPage").style.display =
+        "block";
+
+
+    document.getElementById("companyPage").style.display =
+        "none";
+
+
+    loadCompanies();
+
+}
+
+
+
+/* ================================================= */
+/* ADD COMPANY */
+/* ================================================= */
 
 function addCompany() {
 
     const companyName =
         prompt("أدخل اسم الشركة:");
 
-    if (!companyName || companyName.trim() === "") {
+
+    if (
+        !companyName ||
+        companyName.trim() === ""
+    ) {
+
         return;
+
     }
 
+
     const companies =
-        JSON.parse(localStorage.getItem("mahimmCompanies")) || [];
+        JSON.parse(
+            localStorage.getItem("mahimmCompanies")
+        ) || [];
+
 
     companies.push({
 
@@ -500,30 +861,110 @@ function addCompany() {
 
     });
 
+
     localStorage.setItem(
         "mahimmCompanies",
         JSON.stringify(companies)
     );
 
+
     loadCompanies();
+
 
     alert("تمت إضافة الشركة بنجاح");
 
 }
 
 
-/* ================= LOGOUT ================= */
+
+/* ================================================= */
+/* OPEN COMPANY */
+/* ================================================= */
+
+function openCompany(index) {
+
+    const companies =
+        JSON.parse(
+            localStorage.getItem("mahimmCompanies")
+        ) || [];
+
+
+    const company =
+        companies[index];
+
+
+    if (!company) {
+
+        return;
+
+    }
+
+
+    const balance =
+        company.purchases -
+        company.payments;
+
+
+    document.getElementById("companyName").textContent =
+        company.name;
+
+
+    document.getElementById("companyPurchases").textContent =
+        company.purchases.toLocaleString() +
+        " ريال";
+
+
+    document.getElementById("companyPayments").textContent =
+        company.payments.toLocaleString() +
+        " ريال";
+
+
+    document.getElementById("companyBalance").textContent =
+        balance.toLocaleString() +
+        " ريال";
+
+
+    document.getElementById("companiesPage").style.display =
+        "none";
+
+
+    document.getElementById("companyPage").style.display =
+        "block";
+
+}
+
+
+
+/* ================================================= */
+/* LOGOUT */
+/* ================================================= */
 
 function logout() {
 
-    localStorage.removeItem("mahimmLoggedIn");
+    localStorage.removeItem(
+        "mahimmLoggedIn"
+    );
 
-    document.getElementById("systemPage").style.display = "none";
-    document.getElementById("loginPage").style.display = "flex";
+
+    document.getElementById("systemPage").style.display =
+        "none";
+
+
+    document.getElementById("loginPage").style.display =
+        "flex";
+
+
+    document.getElementById("companyPage").style.display =
+        "none";
+
+
+    document.getElementById("companiesPage").style.display =
+        "block";
 
 }
 
 </script>
+
 
 </body>
 </html>
