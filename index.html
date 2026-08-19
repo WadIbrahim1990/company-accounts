@@ -290,7 +290,7 @@ footer {
 
         <div class="card">
             <h3>عدد الشركات</h3>
-            <strong>3</strong>
+            <strong id="companiesCount">0</strong>
         </div>
 
         <div class="card">
@@ -333,30 +333,7 @@ footer {
             </thead>
 
 
-            <tbody id="companiesTable">
-
-                <tr>
-                    <td>شركة المثال الأولى</td>
-                    <td>10,000 ريال</td>
-                    <td>6,000 ريال</td>
-                    <td class="balance">4,000 ريال</td>
-                </tr>
-
-                <tr>
-                    <td>شركة المثال الثانية</td>
-                    <td>8,000 ريال</td>
-                    <td>3,000 ريال</td>
-                    <td class="balance">5,000 ريال</td>
-                </tr>
-
-                <tr>
-                    <td>شركة المثال الثالثة</td>
-                    <td>7,000 ريال</td>
-                    <td>3,500 ريال</td>
-                    <td class="balance">3,500 ريال</td>
-                </tr>
-
-            </tbody>
+            <tbody id="companiesTable"></tbody>
 
         </table>
 
@@ -383,11 +360,12 @@ function login() {
 
     if (username === "admin" && password === "1234") {
 
-        // حفظ حالة تسجيل الدخول
         localStorage.setItem("mahimmLoggedIn", "true");
 
         document.getElementById("loginPage").style.display = "none";
         document.getElementById("systemPage").style.display = "block";
+
+        loadCompanies();
 
     } else {
 
@@ -408,6 +386,8 @@ window.onload = function () {
         document.getElementById("loginPage").style.display = "none";
         document.getElementById("systemPage").style.display = "block";
 
+        loadCompanies();
+
     } else {
 
         document.getElementById("loginPage").style.display = "flex";
@@ -418,30 +398,117 @@ window.onload = function () {
 };
 
 
-/* ================= ADD COMPANY ================= */
+/* ================= INITIAL COMPANIES ================= */
 
-function addCompany() {
+function initializeCompanies() {
 
-    const companyName = prompt("أدخل اسم الشركة:");
+    const existingCompanies = localStorage.getItem("mahimmCompanies");
 
-    if (companyName && companyName.trim() !== "") {
+    if (!existingCompanies) {
 
-        const table = document.getElementById("companiesTable");
+        const companies = [
 
-        const row = document.createElement("tr");
+            {
+                name: "شركة المثال الأولى",
+                purchases: 10000,
+                payments: 6000
+            },
+
+            {
+                name: "شركة المثال الثانية",
+                purchases: 8000,
+                payments: 3000
+            },
+
+            {
+                name: "شركة المثال الثالثة",
+                purchases: 7000,
+                payments: 3500
+            }
+
+        ];
+
+        localStorage.setItem(
+            "mahimmCompanies",
+            JSON.stringify(companies)
+        );
+    }
+}
+
+
+/* ================= LOAD COMPANIES ================= */
+
+function loadCompanies() {
+
+    initializeCompanies();
+
+    const companies =
+        JSON.parse(localStorage.getItem("mahimmCompanies")) || [];
+
+    const table =
+        document.getElementById("companiesTable");
+
+    table.innerHTML = "";
+
+    companies.forEach(function(company) {
+
+        const balance =
+            company.purchases - company.payments;
+
+        const row =
+            document.createElement("tr");
 
         row.innerHTML = `
-            <td>${companyName}</td>
-            <td>0 ريال</td>
-            <td>0 ريال</td>
-            <td class="balance">0 ريال</td>
+            <td>${company.name}</td>
+            <td>${company.purchases.toLocaleString()} ريال</td>
+            <td>${company.payments.toLocaleString()} ريال</td>
+            <td class="balance">
+                ${balance.toLocaleString()} ريال
+            </td>
         `;
 
         table.appendChild(row);
 
-        alert("تمت إضافة الشركة بنجاح");
+    });
 
+    document.getElementById("companiesCount").textContent =
+        companies.length;
+}
+
+
+/* ================= ADD COMPANY ================= */
+
+function addCompany() {
+
+    const companyName =
+        prompt("أدخل اسم الشركة:");
+
+    if (!companyName || companyName.trim() === "") {
+        return;
     }
+
+    const companies =
+        JSON.parse(localStorage.getItem("mahimmCompanies")) || [];
+
+    companies.push({
+
+        name: companyName.trim(),
+
+        purchases: 0,
+
+        payments: 0
+
+    });
+
+    localStorage.setItem(
+        "mahimmCompanies",
+        JSON.stringify(companies)
+    );
+
+    loadCompanies();
+
+    alert("تمت إضافة الشركة بنجاح");
+
 }
 
 
