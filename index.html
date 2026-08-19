@@ -20,7 +20,6 @@ body {
     color: #222;
 }
 
-
 /* ================= LOGIN ================= */
 
 #loginPage {
@@ -88,7 +87,6 @@ body {
     display: none;
 }
 
-
 /* ================= SYSTEM ================= */
 
 #systemPage {
@@ -121,7 +119,6 @@ header button:hover {
     background: #e8edf2;
 }
 
-
 /* ================= CONTAINER ================= */
 
 .container {
@@ -129,7 +126,6 @@ header button:hover {
     margin: 25px auto;
     padding: 0 15px;
 }
-
 
 /* ================= CARDS ================= */
 
@@ -158,7 +154,6 @@ header button:hover {
     color: #17365d;
 }
 
-
 /* ================= SECTION ================= */
 
 .section {
@@ -179,7 +174,6 @@ header button:hover {
     color: #17365d;
 }
 
-
 /* ================= BUTTON ================= */
 
 button {
@@ -196,6 +190,13 @@ button:hover {
     background: #0f2744;
 }
 
+.secondary-button {
+    background: #777;
+}
+
+.secondary-button:hover {
+    background: #555;
+}
 
 /* ================= TABLE ================= */
 
@@ -216,7 +217,6 @@ th {
     color: #555;
 }
 
-
 /* ================= COMPANY LINK ================= */
 
 .company-link {
@@ -229,14 +229,12 @@ th {
     text-decoration: underline;
 }
 
-
 /* ================= BALANCE ================= */
 
 .balance {
     font-weight: bold;
     color: #c0392b;
 }
-
 
 /* ================= COMPANY PAGE ================= */
 
@@ -254,7 +252,6 @@ th {
     margin-bottom: 20px;
 }
 
-
 /* ================= COMPANY CARDS ================= */
 
 .company-cards {
@@ -264,13 +261,122 @@ th {
     margin-bottom: 25px;
 }
 
-
 /* ================= BACK BUTTON ================= */
 
 .back-button {
     margin-bottom: 20px;
 }
 
+/* ================= ADD COMPANY PAGE ================= */
+
+#addCompanyPage {
+    display: none;
+}
+
+.add-company-title {
+    color: #17365d;
+    margin-bottom: 5px;
+}
+
+.add-company-subtitle {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    margin-bottom: 7px;
+    font-weight: bold;
+    color: #555;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    text-align: right;
+    background: white;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #17365d;
+}
+
+.required {
+    color: #c0392b;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.save-button {
+    background: #17365d;
+}
+
+.cancel-button {
+    background: #777;
+}
+
+.cancel-button:hover {
+    background: #555;
+}
+
+/* ================= COMPANY INFO ================= */
+
+.company-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.info-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.info-item label {
+    display: block;
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.info-item strong {
+    color: #17365d;
+    font-size: 15px;
+}
 
 /* ================= FOOTER ================= */
 
@@ -280,7 +386,6 @@ footer {
     color: #777;
     font-size: 13px;
 }
-
 
 /* ================= MOBILE ================= */
 
@@ -292,6 +397,18 @@ footer {
 
     .company-cards {
         grid-template-columns: 1fr;
+    }
+
+    .company-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width {
+        grid-column: auto;
     }
 
     .section {
@@ -306,14 +423,20 @@ footer {
         font-size: 20px;
     }
 
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+
 }
 
 </style>
 </head>
 
-
 <body>
-
 
 <!-- ================================================= -->
 <!-- LOGIN PAGE -->
@@ -352,7 +475,6 @@ footer {
 </div>
 
 
-
 <!-- ================================================= -->
 <!-- SYSTEM PAGE -->
 <!-- ================================================= -->
@@ -370,7 +492,6 @@ footer {
     </button>
 
 </header>
-
 
 
 <!-- ================================================= -->
@@ -393,30 +514,27 @@ footer {
 
             </div>
 
-
             <div class="card">
 
                 <h3>إجمالي المشتريات</h3>
 
-                <strong>
-                    25,000 ريال
+                <strong id="totalPurchases">
+                    0 ريال
                 </strong>
 
             </div>
-
 
             <div class="card">
 
                 <h3>إجمالي المديونية</h3>
 
-                <strong>
-                    12,500 ريال
+                <strong id="totalBalance">
+                    0 ريال
                 </strong>
 
             </div>
 
         </div>
-
 
 
         <div class="section">
@@ -427,12 +545,11 @@ footer {
                     الشركات
                 </h2>
 
-                <button onclick="addCompany()">
+                <button onclick="showAddCompany()">
                     + إضافة شركة
                 </button>
 
             </div>
-
 
 
             <table>
@@ -461,10 +578,7 @@ footer {
 
                 </thead>
 
-
-
                 <tbody id="companiesTable">
-
                 </tbody>
 
             </table>
@@ -476,6 +590,151 @@ footer {
 </div>
 
 
+<!-- ================================================= -->
+<!-- ADD COMPANY PAGE -->
+<!-- ================================================= -->
+
+<div id="addCompanyPage">
+
+    <div class="container">
+
+        <button
+            class="back-button"
+            onclick="showCompanies()"
+        >
+            ← العودة إلى الشركات
+        </button>
+
+
+        <div class="section">
+
+            <h2 class="add-company-title">
+                إضافة شركة جديدة
+            </h2>
+
+            <p class="add-company-subtitle">
+                أدخل بيانات الشركة الأساسية ثم اضغط حفظ الشركة
+            </p>
+
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>
+                        اسم الشركة
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="newCompanyName"
+                        placeholder="أدخل اسم الشركة"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        رقم الحساب / المرجع
+                    </label>
+
+                    <input
+                        type="text"
+                        id="newCompanyAccount"
+                        placeholder="أدخل رقم الحساب أو المرجع"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        رقم الجوال
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="newCompanyPhone"
+                        placeholder="05xxxxxxxx"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        البريد الإلكتروني
+                    </label>
+
+                    <input
+                        type="email"
+                        id="newCompanyEmail"
+                        placeholder="example@company.com"
+                    >
+
+                </div>
+
+
+                <div class="form-group full-width">
+
+                    <label>
+                        العنوان
+                    </label>
+
+                    <input
+                        type="text"
+                        id="newCompanyAddress"
+                        placeholder="عنوان الشركة"
+                    >
+
+                </div>
+
+
+                <div class="form-group full-width">
+
+                    <label>
+                        ملاحظات
+                    </label>
+
+                    <textarea
+                        id="newCompanyNotes"
+                        placeholder="أدخل أي ملاحظات خاصة بالشركة"
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    class="save-button"
+                    onclick="saveCompany()"
+                >
+                    حفظ الشركة
+                </button>
+
+                <button
+                    class="cancel-button"
+                    onclick="showCompanies()"
+                >
+                    إلغاء
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 
 <!-- ================================================= -->
 <!-- COMPANY FILE -->
@@ -485,14 +744,12 @@ footer {
 
     <div class="container">
 
-
         <button
             class="back-button"
             onclick="showCompanies()"
         >
             ← العودة إلى الشركات
         </button>
-
 
 
         <div class="section">
@@ -504,15 +761,72 @@ footer {
                 اسم الشركة
             </h2>
 
-
             <p class="company-subtitle">
                 ملف الشركة
             </p>
 
 
+            <!-- COMPANY INFORMATION -->
+
+            <div class="company-info-grid">
+
+                <div class="info-item">
+
+                    <label>
+                        رقم الحساب / المرجع
+                    </label>
+
+                    <strong id="companyAccount">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <label>
+                        رقم الجوال
+                    </label>
+
+                    <strong id="companyPhone">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <label>
+                        البريد الإلكتروني
+                    </label>
+
+                    <strong id="companyEmail">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <label>
+                        العنوان
+                    </label>
+
+                    <strong id="companyAddress">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- COMPANY CARDS -->
 
             <div class="company-cards">
-
 
                 <div class="card">
 
@@ -527,7 +841,6 @@ footer {
                 </div>
 
 
-
                 <div class="card">
 
                     <h3>
@@ -539,7 +852,6 @@ footer {
                     </strong>
 
                 </div>
-
 
 
                 <div class="card">
@@ -557,23 +869,45 @@ footer {
 
                 </div>
 
+            </div>
+
+
+            <!-- NOTES -->
+
+            <div class="section">
+
+                <h2>
+                    ملاحظات الشركة
+                </h2>
+
+                <p
+                    id="companyNotes"
+                    style="margin-top:15px;color:#777;"
+                >
+                    لا توجد ملاحظات.
+                </p>
 
             </div>
 
 
+            <!-- TRANSACTIONS -->
 
-            <div class="section">
+            <div
+                class="section"
+                style="margin-top:20px;"
+            >
 
                 <h2>
                     سجل العمليات
                 </h2>
 
-                <p style="margin-top:15px;color:#777;">
+                <p
+                    style="margin-top:15px;color:#777;"
+                >
                     لا توجد عمليات مسجلة حاليًا.
                 </p>
 
             </div>
-
 
         </div>
 
@@ -582,20 +916,16 @@ footer {
 </div>
 
 
-
 <footer>
 
     © 2026 — نظام إدارة حسابات الشركات
 
 </footer>
 
-
 </div>
 
 
-
 <script>
-
 
 /* ================================================= */
 /* LOGIN */
@@ -624,13 +954,10 @@ function login() {
         document.getElementById("loginPage").style.display =
             "none";
 
-
         document.getElementById("systemPage").style.display =
             "block";
 
-
         showCompanies();
-
 
     } else {
 
@@ -640,7 +967,6 @@ function login() {
     }
 
 }
-
 
 
 /* ================================================= */
@@ -658,19 +984,15 @@ window.onload = function () {
         document.getElementById("loginPage").style.display =
             "none";
 
-
         document.getElementById("systemPage").style.display =
             "block";
 
-
         showCompanies();
-
 
     } else {
 
         document.getElementById("loginPage").style.display =
             "flex";
-
 
         document.getElementById("systemPage").style.display =
             "none";
@@ -678,7 +1000,6 @@ window.onload = function () {
     }
 
 };
-
 
 
 /* ================================================= */
@@ -697,18 +1018,33 @@ function initializeCompanies() {
 
             {
                 name: "شركة المثال الأولى",
+                account: "",
+                phone: "",
+                email: "",
+                address: "",
+                notes: "",
                 purchases: 10000,
                 payments: 6000
             },
 
             {
                 name: "شركة المثال الثانية",
+                account: "",
+                phone: "",
+                email: "",
+                address: "",
+                notes: "",
                 purchases: 8000,
                 payments: 3000
             },
 
             {
                 name: "شركة المثال الثالثة",
+                account: "",
+                phone: "",
+                email: "",
+                address: "",
+                notes: "",
                 purchases: 7000,
                 payments: 3500
             }
@@ -724,7 +1060,6 @@ function initializeCompanies() {
     }
 
 }
-
 
 
 /* ================================================= */
@@ -749,11 +1084,24 @@ function loadCompanies() {
     table.innerHTML = "";
 
 
+    let totalPurchases = 0;
+    let totalBalance = 0;
+
+
     companies.forEach(function(company, index) {
 
+        const purchases =
+            Number(company.purchases) || 0;
+
+        const payments =
+            Number(company.payments) || 0;
+
         const balance =
-            company.purchases -
-            company.payments;
+            purchases - payments;
+
+
+        totalPurchases += purchases;
+        totalBalance += balance;
 
 
         const row =
@@ -768,18 +1116,18 @@ function loadCompanies() {
                     class="company-link"
                     onclick="openCompany(${index})"
                 >
-                    ${company.name}
+                    ${escapeHtml(company.name)}
                 </span>
 
             </td>
 
             <td>
-                ${company.purchases.toLocaleString()}
+                ${purchases.toLocaleString()}
                 ريال
             </td>
 
             <td>
-                ${company.payments.toLocaleString()}
+                ${payments.toLocaleString()}
                 ريال
             </td>
 
@@ -801,8 +1149,15 @@ function loadCompanies() {
     document.getElementById("companiesCount").textContent =
         companies.length;
 
-}
 
+    document.getElementById("totalPurchases").textContent =
+        totalPurchases.toLocaleString() + " ريال";
+
+
+    document.getElementById("totalBalance").textContent =
+        totalBalance.toLocaleString() + " ريال";
+
+}
 
 
 /* ================================================= */
@@ -814,8 +1169,10 @@ function showCompanies() {
     document.getElementById("companiesPage").style.display =
         "block";
 
-
     document.getElementById("companyPage").style.display =
+        "none";
+
+    document.getElementById("addCompanyPage").style.display =
         "none";
 
 
@@ -824,21 +1181,82 @@ function showCompanies() {
 }
 
 
+/* ================================================= */
+/* SHOW ADD COMPANY */
+/* ================================================= */
+
+function showAddCompany() {
+
+    document.getElementById("companiesPage").style.display =
+        "none";
+
+    document.getElementById("companyPage").style.display =
+        "none";
+
+    document.getElementById("addCompanyPage").style.display =
+        "block";
+
+
+    document.getElementById("newCompanyName").value = "";
+    document.getElementById("newCompanyAccount").value = "";
+    document.getElementById("newCompanyPhone").value = "";
+    document.getElementById("newCompanyEmail").value = "";
+    document.getElementById("newCompanyAddress").value = "";
+    document.getElementById("newCompanyNotes").value = "";
+
+
+    document.getElementById("newCompanyName").focus();
+
+}
+
 
 /* ================================================= */
-/* ADD COMPANY */
+/* SAVE COMPANY */
 /* ================================================= */
 
-function addCompany() {
+function saveCompany() {
 
-    const companyName =
-        prompt("أدخل اسم الشركة:");
+    const name =
+        document.getElementById("newCompanyName")
+        .value
+        .trim();
 
 
-    if (
-        !companyName ||
-        companyName.trim() === ""
-    ) {
+    const account =
+        document.getElementById("newCompanyAccount")
+        .value
+        .trim();
+
+
+    const phone =
+        document.getElementById("newCompanyPhone")
+        .value
+        .trim();
+
+
+    const email =
+        document.getElementById("newCompanyEmail")
+        .value
+        .trim();
+
+
+    const address =
+        document.getElementById("newCompanyAddress")
+        .value
+        .trim();
+
+
+    const notes =
+        document.getElementById("newCompanyNotes")
+        .value
+        .trim();
+
+
+    if (!name) {
+
+        alert("يرجى إدخال اسم الشركة.");
+
+        document.getElementById("newCompanyName").focus();
 
         return;
 
@@ -851,15 +1269,48 @@ function addCompany() {
         ) || [];
 
 
-    companies.push({
+    const duplicate =
+        companies.some(function(company) {
 
-        name: companyName.trim(),
+            return company.name.trim().toLowerCase() ===
+                   name.toLowerCase();
+
+        });
+
+
+    if (duplicate) {
+
+        alert("هذه الشركة موجودة بالفعل.");
+
+        document.getElementById("newCompanyName").focus();
+
+        return;
+
+    }
+
+
+    const newCompany = {
+
+        name: name,
+
+        account: account,
+
+        phone: phone,
+
+        email: email,
+
+        address: address,
+
+        notes: notes,
 
         purchases: 0,
 
         payments: 0
 
-    });
+    };
+
+
+    companies.push(newCompany);
 
 
     localStorage.setItem(
@@ -868,13 +1319,12 @@ function addCompany() {
     );
 
 
-    loadCompanies();
+    alert("تمت إضافة الشركة بنجاح.");
 
 
-    alert("تمت إضافة الشركة بنجاح");
+    showCompanies();
 
 }
-
 
 
 /* ================================================= */
@@ -900,22 +1350,47 @@ function openCompany(index) {
     }
 
 
+    const purchases =
+        Number(company.purchases) || 0;
+
+    const payments =
+        Number(company.payments) || 0;
+
     const balance =
-        company.purchases -
-        company.payments;
+        purchases - payments;
 
 
     document.getElementById("companyName").textContent =
-        company.name;
+        company.name || "—";
+
+
+    document.getElementById("companyAccount").textContent =
+        company.account || "—";
+
+
+    document.getElementById("companyPhone").textContent =
+        company.phone || "—";
+
+
+    document.getElementById("companyEmail").textContent =
+        company.email || "—";
+
+
+    document.getElementById("companyAddress").textContent =
+        company.address || "—";
+
+
+    document.getElementById("companyNotes").textContent =
+        company.notes || "لا توجد ملاحظات.";
 
 
     document.getElementById("companyPurchases").textContent =
-        company.purchases.toLocaleString() +
+        purchases.toLocaleString() +
         " ريال";
 
 
     document.getElementById("companyPayments").textContent =
-        company.payments.toLocaleString() +
+        payments.toLocaleString() +
         " ريال";
 
 
@@ -927,12 +1402,13 @@ function openCompany(index) {
     document.getElementById("companiesPage").style.display =
         "none";
 
+    document.getElementById("addCompanyPage").style.display =
+        "none";
 
     document.getElementById("companyPage").style.display =
         "block";
 
 }
-
 
 
 /* ================================================= */
@@ -958,13 +1434,32 @@ function logout() {
         "none";
 
 
+    document.getElementById("addCompanyPage").style.display =
+        "none";
+
+
     document.getElementById("companiesPage").style.display =
         "block";
 
 }
 
-</script>
 
+/* ================================================= */
+/* SECURITY - ESCAPE HTML */
+/* ================================================= */
+
+function escapeHtml(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+</script>
 
 </body>
 </html>
