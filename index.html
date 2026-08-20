@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -556,9 +556,7 @@ footer {
 
 <body>
 
-<!-- ================================================= -->
-<!-- LOGIN PAGE -->
-<!-- ================================================= -->
+<!-- LOGIN -->
 
 <div id="loginPage">
 
@@ -593,9 +591,7 @@ footer {
 </div>
 
 
-<!-- ================================================= -->
-<!-- SYSTEM PAGE -->
-<!-- ================================================= -->
+<!-- SYSTEM -->
 
 <div id="systemPage">
 
@@ -612,9 +608,7 @@ footer {
 </header>
 
 
-<!-- ================================================= -->
-<!-- COMPANIES PAGE -->
-<!-- ================================================= -->
+<!-- COMPANIES -->
 
 <div id="companiesPage">
 
@@ -626,9 +620,7 @@ footer {
 
                 <h3>عدد الشركات</h3>
 
-                <strong id="companiesCount">
-                    0
-                </strong>
+                <strong id="companiesCount">0</strong>
 
             </div>
 
@@ -636,9 +628,7 @@ footer {
 
                 <h3>إجمالي المشتريات</h3>
 
-                <strong id="totalPurchases">
-                    0 ريال
-                </strong>
+                <strong id="totalPurchases">0 ريال</strong>
 
             </div>
 
@@ -646,9 +636,7 @@ footer {
 
                 <h3>إجمالي المديونية</h3>
 
-                <strong id="totalBalance">
-                    0 ريال
-                </strong>
+                <strong id="totalBalance">0 ريال</strong>
 
             </div>
 
@@ -659,9 +647,7 @@ footer {
 
             <div class="section-header">
 
-                <h2>
-                    الشركات
-                </h2>
+                <h2>الشركات</h2>
 
                 <button onclick="showAddCompany()">
                     + إضافة شركة
@@ -676,28 +662,16 @@ footer {
 
                     <tr>
 
-                        <th>
-                            الشركة
-                        </th>
-
-                        <th>
-                            المشتريات
-                        </th>
-
-                        <th>
-                            السداد
-                        </th>
-
-                        <th>
-                            الرصيد
-                        </th>
+                        <th>الشركة</th>
+                        <th>المشتريات</th>
+                        <th>السداد</th>
+                        <th>الرصيد</th>
 
                     </tr>
 
                 </thead>
 
-                <tbody id="companiesTable">
-                </tbody>
+                <tbody id="companiesTable"></tbody>
 
             </table>
 
@@ -708,9 +682,7 @@ footer {
 </div>
 
 
-<!-- ================================================= -->
-<!-- ADD COMPANY PAGE -->
-<!-- ================================================= -->
+<!-- ADD COMPANY -->
 
 <div id="addCompanyPage">
 
@@ -755,9 +727,7 @@ footer {
 
                 <div class="form-group">
 
-                    <label>
-                        رقم الحساب / المرجع
-                    </label>
+                    <label>رقم الحساب / المرجع</label>
 
                     <input
                         type="text"
@@ -770,9 +740,7 @@ footer {
 
                 <div class="form-group">
 
-                    <label>
-                        رقم الجوال
-                    </label>
+                    <label>رقم الجوال</label>
 
                     <input
                         type="tel"
@@ -785,9 +753,7 @@ footer {
 
                 <div class="form-group">
 
-                    <label>
-                        البريد الإلكتروني
-                    </label>
+                    <label>البريد الإلكتروني</label>
 
                     <input
                         type="email"
@@ -800,9 +766,7 @@ footer {
 
                 <div class="form-group full-width">
 
-                    <label>
-                        العنوان
-                    </label>
+                    <label>العنوان</label>
 
                     <input
                         type="text"
@@ -815,9 +779,7 @@ footer {
 
                 <div class="form-group full-width">
 
-                    <label>
-                        ملاحظات
-                    </label>
+                    <label>ملاحظات</label>
 
                     <textarea
                         id="newCompanyNotes"
@@ -854,9 +816,7 @@ footer {
 </div>
 
 
-<!-- ================================================= -->
 <!-- COMPANY FILE -->
-<!-- ================================================= -->
 
 <div id="companyPage">
 
@@ -884,73 +844,51 @@ footer {
             </p>
 
 
-            <!-- COMPANY INFORMATION -->
-
             <div class="company-info-grid">
 
                 <div class="info-item">
 
-                    <label>
-                        رقم الحساب / المرجع
-                    </label>
+                    <label>رقم الحساب / المرجع</label>
 
-                    <strong id="companyAccount">
-                        —
-                    </strong>
+                    <strong id="companyAccount">—</strong>
 
                 </div>
 
 
                 <div class="info-item">
 
-                    <label>
-                        رقم الجوال
-                    </label>
+                    <label>رقم الجوال</label>
 
-                    <strong id="companyPhone">
-                        —
-                    </strong>
+                    <strong id="companyPhone">—</strong>
 
                 </div>
 
 
                 <div class="info-item">
 
-                    <label>
-                        البريد الإلكتروني
-                    </label>
+                    <label>البريد الإلكتروني</label>
 
-                    <strong id="companyEmail">
-                        —
-                    </strong>
+                    <strong id="companyEmail">—</strong>
 
                 </div>
 
 
                 <div class="info-item">
 
-                    <label>
-                        العنوان
-                    </label>
+                    <label>العنوان</label>
 
-                    <strong id="companyAddress">
-                        —
-                    </strong>
+                    <strong id="companyAddress">—</strong>
 
                 </div>
 
             </div>
 
 
-            <!-- COMPANY CARDS -->
-
             <div class="company-cards">
 
                 <div class="card">
 
-                    <h3>
-                        إجمالي المشتريات
-                    </h3>
+                    <h3>إجمالي المشتريات</h3>
 
                     <strong id="companyPurchases">
                         0 ريال
@@ -961,9 +899,7 @@ footer {
 
                 <div class="card">
 
-                    <h3>
-                        إجمالي السداد
-                    </h3>
+                    <h3>إجمالي السداد</h3>
 
                     <strong id="companyPayments">
                         0 ريال
@@ -974,9 +910,7 @@ footer {
 
                 <div class="card">
 
-                    <h3>
-                        الرصيد الحالي
-                    </h3>
+                    <h3>الرصيد الحالي</h3>
 
                     <strong
                         id="companyBalance"
@@ -990,13 +924,9 @@ footer {
             </div>
 
 
-            <!-- NOTES -->
-
             <div class="section">
 
-                <h2>
-                    ملاحظات الشركة
-                </h2>
+                <h2>ملاحظات الشركة</h2>
 
                 <p
                     id="companyNotes"
@@ -1008,8 +938,6 @@ footer {
             </div>
 
 
-            <!-- TRANSACTIONS -->
-
             <div
                 class="section"
                 style="margin-top:20px;"
@@ -1017,9 +945,7 @@ footer {
 
                 <div class="section-header">
 
-                    <h2>
-                        سجل العمليات
-                    </h2>
+                    <h2>سجل العمليات</h2>
 
                     <div class="transaction-actions">
 
@@ -1050,36 +976,18 @@ footer {
 
                             <tr>
 
-                                <th>
-                                    التاريخ
-                                </th>
-
-                                <th>
-                                    النوع
-                                </th>
-
-                                <th>
-                                    رقم المرجع
-                                </th>
-
-                                <th>
-                                    البيان
-                                </th>
-
-                                <th>
-                                    المبلغ
-                                </th>
-
-                                <th>
-                                    الإجراء
-                                </th>
+                                <th>التاريخ</th>
+                                <th>النوع</th>
+                                <th>رقم المرجع</th>
+                                <th>البيان</th>
+                                <th>المبلغ</th>
+                                <th>الإجراء</th>
 
                             </tr>
 
                         </thead>
 
-                        <tbody id="transactionsTable">
-                        </tbody>
+                        <tbody id="transactionsTable"></tbody>
 
                     </table>
 
@@ -1094,9 +1002,7 @@ footer {
 </div>
 
 
-<!-- ================================================= -->
 <!-- TRANSACTION MODAL -->
-<!-- ================================================= -->
 
 <div
     id="transactionModal"
@@ -1133,9 +1039,7 @@ footer {
 
             <div class="form-group">
 
-                <label>
-                    نوع العملية
-                </label>
+                <label>نوع العملية</label>
 
                 <select id="transactionType">
 
@@ -1154,9 +1058,7 @@ footer {
 
             <div class="form-group">
 
-                <label>
-                    رقم المرجع
-                </label>
+                <label>رقم المرجع</label>
 
                 <input
                     type="text"
@@ -1187,9 +1089,7 @@ footer {
 
             <div class="form-group full-width">
 
-                <label>
-                    البيان
-                </label>
+                <label>البيان</label>
 
                 <textarea
                     id="transactionDescription"
@@ -1203,9 +1103,7 @@ footer {
 
         <div class="modal-actions">
 
-            <button
-                onclick="saveTransaction()"
-            >
+            <button onclick="saveTransaction()">
                 حفظ العملية
             </button>
 
@@ -1224,9 +1122,7 @@ footer {
 
 
 <footer>
-
     © 2026 — نظام إدارة حسابات الشركات
-
 </footer>
 
 </div>
@@ -1234,16 +1130,10 @@ footer {
 
 <script>
 
-/* ================================================= */
-/* GLOBAL VARIABLES */
-/* ================================================= */
-
 let currentCompanyIndex = null;
 
 
-/* ================================================= */
-/* LOGIN */
-/* ================================================= */
+/* ================= LOGIN ================= */
 
 function login() {
 
@@ -1252,7 +1142,6 @@ function login() {
 
     const password =
         document.getElementById("password").value;
-
 
     if (
         username === "admin" &&
@@ -1263,7 +1152,6 @@ function login() {
             "mahimmLoggedIn",
             "true"
         );
-
 
         document.getElementById("loginPage").style.display =
             "none";
@@ -1283,15 +1171,12 @@ function login() {
 }
 
 
-/* ================================================= */
-/* CHECK LOGIN */
-/* ================================================= */
+/* ================= CHECK LOGIN ================= */
 
 window.onload = function () {
 
     const loggedIn =
         localStorage.getItem("mahimmLoggedIn");
-
 
     if (loggedIn === "true") {
 
@@ -1316,15 +1201,12 @@ window.onload = function () {
 };
 
 
-/* ================================================= */
-/* INITIAL COMPANIES */
-/* ================================================= */
+/* ================= INITIAL COMPANIES ================= */
 
 function initializeCompanies() {
 
     const existingCompanies =
         localStorage.getItem("mahimmCompanies");
-
 
     if (!existingCompanies) {
 
@@ -1368,7 +1250,6 @@ function initializeCompanies() {
 
         ];
 
-
         localStorage.setItem(
             "mahimmCompanies",
             JSON.stringify(companies)
@@ -1379,9 +1260,7 @@ function initializeCompanies() {
 }
 
 
-/* ================================================= */
-/* ENSURE TRANSACTIONS */
-/* ================================================= */
+/* ================= TRANSACTIONS ================= */
 
 function ensureTransactions(company) {
 
@@ -1394,31 +1273,25 @@ function ensureTransactions(company) {
 }
 
 
-/* ================================================= */
-/* CALCULATE COMPANY TOTALS */
-/* ================================================= */
+/* ================= CALCULATE TOTALS ================= */
 
 function calculateCompanyTotals(company) {
 
     ensureTransactions(company);
 
-
     let purchases = 0;
     let payments = 0;
-
 
     company.transactions.forEach(function(transaction) {
 
         const amount =
             Number(transaction.amount) || 0;
 
-
         if (transaction.type === "purchase") {
 
             purchases += amount;
 
         }
-
 
         if (transaction.type === "payment") {
 
@@ -1427,15 +1300,6 @@ function calculateCompanyTotals(company) {
         }
 
     });
-
-
-    /*
-        الشركات القديمة لديها مبالغ في
-        purchases/payments قبل إنشاء سجل العمليات.
-
-        إذا لم توجد عمليات، نحافظ على المبالغ
-        القديمة حتى لا تضيع البيانات.
-    */
 
     if (company.transactions.length === 0) {
 
@@ -1447,10 +1311,8 @@ function calculateCompanyTotals(company) {
 
     }
 
-
     company.purchases = purchases;
     company.payments = payments;
-
 
     return {
 
@@ -1465,46 +1327,36 @@ function calculateCompanyTotals(company) {
 }
 
 
-/* ================================================= */
-/* LOAD COMPANIES */
-/* ================================================= */
+/* ================= LOAD COMPANIES ================= */
 
 function loadCompanies() {
 
     initializeCompanies();
-
 
     const companies =
         JSON.parse(
             localStorage.getItem("mahimmCompanies")
         ) || [];
 
-
     const table =
         document.getElementById("companiesTable");
 
-
     table.innerHTML = "";
-
 
     let totalPurchases = 0;
     let totalBalance = 0;
-
 
     companies.forEach(function(company, index) {
 
         const totals =
             calculateCompanyTotals(company);
 
-
         totalPurchases += totals.purchases;
 
         totalBalance += totals.balance;
 
-
         const row =
             document.createElement("tr");
-
 
         row.innerHTML = `
 
@@ -1530,33 +1382,26 @@ function loadCompanies() {
             </td>
 
             <td class="balance">
-
                 ${totals.balance.toLocaleString()}
                 ريال
-
             </td>
 
         `;
 
-
         table.appendChild(row);
 
     });
-
 
     localStorage.setItem(
         "mahimmCompanies",
         JSON.stringify(companies)
     );
 
-
     document.getElementById("companiesCount").textContent =
         companies.length;
 
-
     document.getElementById("totalPurchases").textContent =
         totalPurchases.toLocaleString() + " ريال";
-
 
     document.getElementById("totalBalance").textContent =
         totalBalance.toLocaleString() + " ريال";
@@ -1564,14 +1409,11 @@ function loadCompanies() {
 }
 
 
-/* ================================================= */
-/* SHOW COMPANIES */
-/* ================================================= */
+/* ================= SHOW COMPANIES ================= */
 
 function showCompanies() {
 
     currentCompanyIndex = null;
-
 
     document.getElementById("companiesPage").style.display =
         "block";
@@ -1582,18 +1424,14 @@ function showCompanies() {
     document.getElementById("addCompanyPage").style.display =
         "none";
 
-
     closeTransactionModal();
-
 
     loadCompanies();
 
 }
 
 
-/* ================================================= */
-/* SHOW ADD COMPANY */
-/* ================================================= */
+/* ================= ADD COMPANY ================= */
 
 function showAddCompany() {
 
@@ -1606,7 +1444,6 @@ function showAddCompany() {
     document.getElementById("addCompanyPage").style.display =
         "block";
 
-
     document.getElementById("newCompanyName").value = "";
     document.getElementById("newCompanyAccount").value = "";
     document.getElementById("newCompanyPhone").value = "";
@@ -1614,15 +1451,12 @@ function showAddCompany() {
     document.getElementById("newCompanyAddress").value = "";
     document.getElementById("newCompanyNotes").value = "";
 
-
     document.getElementById("newCompanyName").focus();
 
 }
 
 
-/* ================================================= */
-/* SAVE COMPANY */
-/* ================================================= */
+/* ================= SAVE COMPANY ================= */
 
 function saveCompany() {
 
@@ -1631,36 +1465,30 @@ function saveCompany() {
         .value
         .trim();
 
-
     const account =
         document.getElementById("newCompanyAccount")
         .value
         .trim();
-
 
     const phone =
         document.getElementById("newCompanyPhone")
         .value
         .trim();
 
-
     const email =
         document.getElementById("newCompanyEmail")
         .value
         .trim();
-
 
     const address =
         document.getElementById("newCompanyAddress")
         .value
         .trim();
 
-
     const notes =
         document.getElementById("newCompanyNotes")
         .value
         .trim();
-
 
     if (!name) {
 
@@ -1672,12 +1500,10 @@ function saveCompany() {
 
     }
 
-
     const companies =
         JSON.parse(
             localStorage.getItem("mahimmCompanies")
         ) || [];
-
 
     const duplicate =
         companies.some(function(company) {
@@ -1686,7 +1512,6 @@ function saveCompany() {
                    name.toLowerCase();
 
         });
-
 
     if (duplicate) {
 
@@ -1697,7 +1522,6 @@ function saveCompany() {
         return;
 
     }
-
 
     const newCompany = {
 
@@ -1721,27 +1545,21 @@ function saveCompany() {
 
     };
 
-
     companies.push(newCompany);
-
 
     localStorage.setItem(
         "mahimmCompanies",
         JSON.stringify(companies)
     );
 
-
     alert("تمت إضافة الشركة بنجاح.");
-
 
     showCompanies();
 
 }
 
 
-/* ================================================= */
-/* OPEN COMPANY */
-/* ================================================= */
+/* ================= OPEN COMPANY ================= */
 
 function openCompany(index) {
 
@@ -1750,10 +1568,8 @@ function openCompany(index) {
             localStorage.getItem("mahimmCompanies")
         ) || [];
 
-
     const company =
         companies[index];
-
 
     if (!company) {
 
@@ -1761,58 +1577,42 @@ function openCompany(index) {
 
     }
 
-
     currentCompanyIndex = index;
-
 
     const totals =
         calculateCompanyTotals(company);
-
 
     localStorage.setItem(
         "mahimmCompanies",
         JSON.stringify(companies)
     );
 
-
     document.getElementById("companyName").textContent =
         company.name || "—";
-
 
     document.getElementById("companyAccount").textContent =
         company.account || "—";
 
-
     document.getElementById("companyPhone").textContent =
         company.phone || "—";
-
 
     document.getElementById("companyEmail").textContent =
         company.email || "—";
 
-
     document.getElementById("companyAddress").textContent =
         company.address || "—";
-
 
     document.getElementById("companyNotes").textContent =
         company.notes || "لا توجد ملاحظات.";
 
-
     document.getElementById("companyPurchases").textContent =
-        totals.purchases.toLocaleString() +
-        " ريال";
-
+        totals.purchases.toLocaleString() + " ريال";
 
     document.getElementById("companyPayments").textContent =
-        totals.payments.toLocaleString() +
-        " ريال";
-
+        totals.payments.toLocaleString() + " ريال";
 
     document.getElementById("companyBalance").textContent =
-        totals.balance.toLocaleString() +
-        " ريال";
-
+        totals.balance.toLocaleString() + " ريال";
 
     document.getElementById("companiesPage").style.display =
         "none";
@@ -1823,33 +1623,26 @@ function openCompany(index) {
     document.getElementById("companyPage").style.display =
         "block";
 
-
     renderTransactions(company);
 
 }
 
 
-/* ================================================= */
-/* RENDER TRANSACTIONS */
-/* ================================================= */
+/* ================= RENDER TRANSACTIONS ================= */
 
 function renderTransactions(company) {
 
     ensureTransactions(company);
 
-
     const table =
         document.getElementById("transactionsTable");
 
-
     table.innerHTML = "";
-
 
     if (company.transactions.length === 0) {
 
         const row =
             document.createElement("tr");
-
 
         row.innerHTML = `
 
@@ -1862,13 +1655,11 @@ function renderTransactions(company) {
 
         `;
 
-
         table.appendChild(row);
 
         return;
 
     }
-
 
     const transactions =
         [...company.transactions]
@@ -1878,24 +1669,20 @@ function renderTransactions(company) {
 
         });
 
-
     transactions.forEach(function(transaction) {
 
         const row =
             document.createElement("tr");
-
 
         const typeText =
             transaction.type === "purchase"
                 ? "شراء"
                 : "سداد";
 
-
         const typeClass =
             transaction.type === "purchase"
                 ? "purchase-text"
                 : "payment-text";
-
 
         row.innerHTML = `
 
@@ -1933,7 +1720,6 @@ function renderTransactions(company) {
 
         `;
 
-
         table.appendChild(row);
 
     });
@@ -1941,9 +1727,7 @@ function renderTransactions(company) {
 }
 
 
-/* ================================================= */
-/* OPEN TRANSACTION MODAL */
-/* ================================================= */
+/* ================= OPEN MODAL ================= */
 
 function openTransactionModal(type) {
 
@@ -1955,51 +1739,40 @@ function openTransactionModal(type) {
 
     }
 
-
     document.getElementById("transactionModal").style.display =
         "flex";
 
-
     document.getElementById("transactionType").value =
         type;
-
 
     document.getElementById("transactionModalTitle").textContent =
         type === "purchase"
             ? "إضافة عملية شراء"
             : "إضافة عملية سداد";
 
-
     const today =
         new Date()
         .toISOString()
         .split("T")[0];
 
-
     document.getElementById("transactionDate").value =
         today;
-
 
     document.getElementById("transactionReference").value =
         "";
 
-
     document.getElementById("transactionAmount").value =
         "";
 
-
     document.getElementById("transactionDescription").value =
         "";
-
 
     document.getElementById("transactionAmount").focus();
 
 }
 
 
-/* ================================================= */
-/* CLOSE TRANSACTION MODAL */
-/* ================================================= */
+/* ================= CLOSE MODAL ================= */
 
 function closeTransactionModal() {
 
@@ -2009,9 +1782,7 @@ function closeTransactionModal() {
 }
 
 
-/* ================================================= */
-/* SAVE TRANSACTION */
-/* ================================================= */
+/* ================= SAVE TRANSACTION ================= */
 
 function saveTransaction() {
 
@@ -2021,32 +1792,26 @@ function saveTransaction() {
 
     }
 
-
     const date =
         document.getElementById("transactionDate").value;
 
-
     const type =
         document.getElementById("transactionType").value;
-
 
     const reference =
         document.getElementById("transactionReference")
         .value
         .trim();
 
-
     const amount =
         Number(
             document.getElementById("transactionAmount").value
         );
 
-
     const description =
         document.getElementById("transactionDescription")
         .value
         .trim();
-
 
     if (!date) {
 
@@ -2055,7 +1820,6 @@ function saveTransaction() {
         return;
 
     }
-
 
     if (!amount || amount <= 0) {
 
@@ -2067,16 +1831,13 @@ function saveTransaction() {
 
     }
 
-
     const companies =
         JSON.parse(
             localStorage.getItem("mahimmCompanies")
         ) || [];
 
-
     const company =
         companies[currentCompanyIndex];
-
 
     if (!company) {
 
@@ -2086,9 +1847,7 @@ function saveTransaction() {
 
     }
 
-
     ensureTransactions(company);
-
 
     const transaction = {
 
@@ -2108,33 +1867,25 @@ function saveTransaction() {
 
     };
 
-
     company.transactions.push(transaction);
 
-
     calculateCompanyTotals(company);
-
 
     localStorage.setItem(
         "mahimmCompanies",
         JSON.stringify(companies)
     );
 
-
     closeTransactionModal();
 
-
     openCompany(currentCompanyIndex);
-
 
     alert("تم حفظ العملية بنجاح.");
 
 }
 
 
-/* ================================================= */
-/* DELETE TRANSACTION */
-/* ================================================= */
+/* ================= DELETE TRANSACTION ================= */
 
 function deleteTransaction(transactionId) {
 
@@ -2144,12 +1895,10 @@ function deleteTransaction(transactionId) {
 
     }
 
-
     const confirmDelete =
         confirm(
             "هل أنت متأكد من حذف هذه العملية؟"
         );
-
 
     if (!confirmDelete) {
 
@@ -2157,16 +1906,13 @@ function deleteTransaction(transactionId) {
 
     }
 
-
     const companies =
         JSON.parse(
             localStorage.getItem("mahimmCompanies")
         ) || [];
 
-
     const company =
         companies[currentCompanyIndex];
-
 
     if (!company) {
 
@@ -2174,9 +1920,7 @@ function deleteTransaction(transactionId) {
 
     }
 
-
     ensureTransactions(company);
-
 
     company.transactions =
         company.transactions.filter(function(transaction) {
@@ -2185,24 +1929,19 @@ function deleteTransaction(transactionId) {
 
         });
 
-
     calculateCompanyTotals(company);
-
 
     localStorage.setItem(
         "mahimmCompanies",
         JSON.stringify(companies)
     );
 
-
     openCompany(currentCompanyIndex);
 
 }
 
 
-/* ================================================= */
-/* LOGOUT */
-/* ================================================= */
+/* ================= LOGOUT ================= */
 
 function logout() {
 
@@ -2210,28 +1949,21 @@ function logout() {
         "mahimmLoggedIn"
     );
 
-
     currentCompanyIndex = null;
 
-
     closeTransactionModal();
-
 
     document.getElementById("systemPage").style.display =
         "none";
 
-
     document.getElementById("loginPage").style.display =
         "flex";
-
 
     document.getElementById("companyPage").style.display =
         "none";
 
-
     document.getElementById("addCompanyPage").style.display =
         "none";
-
 
     document.getElementById("companiesPage").style.display =
         "block";
@@ -2239,9 +1971,7 @@ function logout() {
 }
 
 
-/* ================================================= */
-/* SECURITY - ESCAPE HTML */
-/* ================================================= */
+/* ================= SECURITY ================= */
 
 function escapeHtml(value) {
 
