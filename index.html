@@ -198,6 +198,28 @@ button:hover {
     background: #555;
 }
 
+.purchase-button {
+    background: #17365d;
+}
+
+.payment-button {
+    background: #277a4b;
+}
+
+.payment-button:hover {
+    background: #1d603a;
+}
+
+.delete-button {
+    background: #c0392b;
+    padding: 7px 12px;
+    font-size: 12px;
+}
+
+.delete-button:hover {
+    background: #962d22;
+}
+
 /* ================= TABLE ================= */
 
 table {
@@ -306,7 +328,8 @@ th {
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
     width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
@@ -322,7 +345,8 @@ th {
 }
 
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
     outline: none;
     border-color: #17365d;
 }
@@ -378,6 +402,88 @@ th {
     font-size: 15px;
 }
 
+/* ================= TRANSACTIONS ================= */
+
+.transaction-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.transaction-table-wrapper {
+    overflow-x: auto;
+}
+
+.transaction-table {
+    min-width: 750px;
+}
+
+.purchase-text {
+    color: #17365d;
+    font-weight: bold;
+}
+
+.payment-text {
+    color: #277a4b;
+    font-weight: bold;
+}
+
+.empty-transactions {
+    text-align: center;
+    color: #777;
+    padding: 30px 10px;
+}
+
+/* ================= MODAL ================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-box {
+    width: 100%;
+    max-width: 550px;
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.25);
+}
+
+.modal-box h2 {
+    color: #17365d;
+    margin-bottom: 8px;
+}
+
+.modal-subtitle {
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-actions button {
+    flex: 1;
+}
+
+.modal-cancel {
+    background: #777;
+}
+
+.modal-cancel:hover {
+    background: #555;
+}
+
 /* ================= FOOTER ================= */
 
 footer {
@@ -429,6 +535,18 @@ footer {
 
     .form-actions button {
         width: 100%;
+    }
+
+    .transaction-actions {
+        flex-direction: column;
+    }
+
+    .transaction-actions button {
+        width: 100%;
+    }
+
+    .modal-actions {
+        flex-direction: column;
     }
 
 }
@@ -897,17 +1015,206 @@ footer {
                 style="margin-top:20px;"
             >
 
-                <h2>
-                    سجل العمليات
-                </h2>
+                <div class="section-header">
 
-                <p
-                    style="margin-top:15px;color:#777;"
-                >
-                    لا توجد عمليات مسجلة حاليًا.
-                </p>
+                    <h2>
+                        سجل العمليات
+                    </h2>
+
+                    <div class="transaction-actions">
+
+                        <button
+                            class="purchase-button"
+                            onclick="openTransactionModal('purchase')"
+                        >
+                            + إضافة شراء
+                        </button>
+
+                        <button
+                            class="payment-button"
+                            onclick="openTransactionModal('payment')"
+                        >
+                            + إضافة سداد
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="transaction-table-wrapper">
+
+                    <table class="transaction-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    التاريخ
+                                </th>
+
+                                <th>
+                                    النوع
+                                </th>
+
+                                <th>
+                                    رقم المرجع
+                                </th>
+
+                                <th>
+                                    البيان
+                                </th>
+
+                                <th>
+                                    المبلغ
+                                </th>
+
+                                <th>
+                                    الإجراء
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="transactionsTable">
+                        </tbody>
+
+                    </table>
+
+                </div>
 
             </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- TRANSACTION MODAL -->
+<!-- ================================================= -->
+
+<div
+    id="transactionModal"
+    class="modal"
+>
+
+    <div class="modal-box">
+
+        <h2 id="transactionModalTitle">
+            إضافة عملية
+        </h2>
+
+        <p class="modal-subtitle">
+            أدخل بيانات العملية ثم اضغط حفظ
+        </p>
+
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label>
+                    التاريخ
+                    <span class="required">*</span>
+                </label>
+
+                <input
+                    type="date"
+                    id="transactionDate"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    نوع العملية
+                </label>
+
+                <select id="transactionType">
+
+                    <option value="purchase">
+                        شراء
+                    </option>
+
+                    <option value="payment">
+                        سداد
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    رقم المرجع
+                </label>
+
+                <input
+                    type="text"
+                    id="transactionReference"
+                    placeholder="رقم الفاتورة أو سند السداد"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    المبلغ
+                    <span class="required">*</span>
+                </label>
+
+                <input
+                    type="number"
+                    id="transactionAmount"
+                    min="0"
+                    step="0.01"
+                    placeholder="0.00"
+                >
+
+            </div>
+
+
+            <div class="form-group full-width">
+
+                <label>
+                    البيان
+                </label>
+
+                <textarea
+                    id="transactionDescription"
+                    placeholder="وصف العملية أو ملاحظاتها"
+                ></textarea>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                onclick="saveTransaction()"
+            >
+                حفظ العملية
+            </button>
+
+            <button
+                class="modal-cancel"
+                onclick="closeTransactionModal()"
+            >
+                إلغاء
+            </button>
 
         </div>
 
@@ -926,6 +1233,13 @@ footer {
 
 
 <script>
+
+/* ================================================= */
+/* GLOBAL VARIABLES */
+/* ================================================= */
+
+let currentCompanyIndex = null;
+
 
 /* ================================================= */
 /* LOGIN */
@@ -1024,7 +1338,8 @@ function initializeCompanies() {
                 address: "",
                 notes: "",
                 purchases: 10000,
-                payments: 6000
+                payments: 6000,
+                transactions: []
             },
 
             {
@@ -1035,7 +1350,8 @@ function initializeCompanies() {
                 address: "",
                 notes: "",
                 purchases: 8000,
-                payments: 3000
+                payments: 3000,
+                transactions: []
             },
 
             {
@@ -1046,7 +1362,8 @@ function initializeCompanies() {
                 address: "",
                 notes: "",
                 purchases: 7000,
-                payments: 3500
+                payments: 3500,
+                transactions: []
             }
 
         ];
@@ -1058,6 +1375,92 @@ function initializeCompanies() {
         );
 
     }
+
+}
+
+
+/* ================================================= */
+/* ENSURE TRANSACTIONS */
+/* ================================================= */
+
+function ensureTransactions(company) {
+
+    if (!Array.isArray(company.transactions)) {
+
+        company.transactions = [];
+
+    }
+
+}
+
+
+/* ================================================= */
+/* CALCULATE COMPANY TOTALS */
+/* ================================================= */
+
+function calculateCompanyTotals(company) {
+
+    ensureTransactions(company);
+
+
+    let purchases = 0;
+    let payments = 0;
+
+
+    company.transactions.forEach(function(transaction) {
+
+        const amount =
+            Number(transaction.amount) || 0;
+
+
+        if (transaction.type === "purchase") {
+
+            purchases += amount;
+
+        }
+
+
+        if (transaction.type === "payment") {
+
+            payments += amount;
+
+        }
+
+    });
+
+
+    /*
+        الشركات القديمة لديها مبالغ في
+        purchases/payments قبل إنشاء سجل العمليات.
+
+        إذا لم توجد عمليات، نحافظ على المبالغ
+        القديمة حتى لا تضيع البيانات.
+    */
+
+    if (company.transactions.length === 0) {
+
+        purchases =
+            Number(company.purchases) || 0;
+
+        payments =
+            Number(company.payments) || 0;
+
+    }
+
+
+    company.purchases = purchases;
+    company.payments = payments;
+
+
+    return {
+
+        purchases: purchases,
+
+        payments: payments,
+
+        balance: purchases - payments
+
+    };
 
 }
 
@@ -1090,18 +1493,13 @@ function loadCompanies() {
 
     companies.forEach(function(company, index) {
 
-        const purchases =
-            Number(company.purchases) || 0;
-
-        const payments =
-            Number(company.payments) || 0;
-
-        const balance =
-            purchases - payments;
+        const totals =
+            calculateCompanyTotals(company);
 
 
-        totalPurchases += purchases;
-        totalBalance += balance;
+        totalPurchases += totals.purchases;
+
+        totalBalance += totals.balance;
 
 
         const row =
@@ -1122,18 +1520,18 @@ function loadCompanies() {
             </td>
 
             <td>
-                ${purchases.toLocaleString()}
+                ${totals.purchases.toLocaleString()}
                 ريال
             </td>
 
             <td>
-                ${payments.toLocaleString()}
+                ${totals.payments.toLocaleString()}
                 ريال
             </td>
 
             <td class="balance">
 
-                ${balance.toLocaleString()}
+                ${totals.balance.toLocaleString()}
                 ريال
 
             </td>
@@ -1144,6 +1542,12 @@ function loadCompanies() {
         table.appendChild(row);
 
     });
+
+
+    localStorage.setItem(
+        "mahimmCompanies",
+        JSON.stringify(companies)
+    );
 
 
     document.getElementById("companiesCount").textContent =
@@ -1166,6 +1570,9 @@ function loadCompanies() {
 
 function showCompanies() {
 
+    currentCompanyIndex = null;
+
+
     document.getElementById("companiesPage").style.display =
         "block";
 
@@ -1174,6 +1581,9 @@ function showCompanies() {
 
     document.getElementById("addCompanyPage").style.display =
         "none";
+
+
+    closeTransactionModal();
 
 
     loadCompanies();
@@ -1305,7 +1715,9 @@ function saveCompany() {
 
         purchases: 0,
 
-        payments: 0
+        payments: 0,
+
+        transactions: []
 
     };
 
@@ -1350,14 +1762,17 @@ function openCompany(index) {
     }
 
 
-    const purchases =
-        Number(company.purchases) || 0;
+    currentCompanyIndex = index;
 
-    const payments =
-        Number(company.payments) || 0;
 
-    const balance =
-        purchases - payments;
+    const totals =
+        calculateCompanyTotals(company);
+
+
+    localStorage.setItem(
+        "mahimmCompanies",
+        JSON.stringify(companies)
+    );
 
 
     document.getElementById("companyName").textContent =
@@ -1385,17 +1800,17 @@ function openCompany(index) {
 
 
     document.getElementById("companyPurchases").textContent =
-        purchases.toLocaleString() +
+        totals.purchases.toLocaleString() +
         " ريال";
 
 
     document.getElementById("companyPayments").textContent =
-        payments.toLocaleString() +
+        totals.payments.toLocaleString() +
         " ريال";
 
 
     document.getElementById("companyBalance").textContent =
-        balance.toLocaleString() +
+        totals.balance.toLocaleString() +
         " ريال";
 
 
@@ -1407,6 +1822,380 @@ function openCompany(index) {
 
     document.getElementById("companyPage").style.display =
         "block";
+
+
+    renderTransactions(company);
+
+}
+
+
+/* ================================================= */
+/* RENDER TRANSACTIONS */
+/* ================================================= */
+
+function renderTransactions(company) {
+
+    ensureTransactions(company);
+
+
+    const table =
+        document.getElementById("transactionsTable");
+
+
+    table.innerHTML = "";
+
+
+    if (company.transactions.length === 0) {
+
+        const row =
+            document.createElement("tr");
+
+
+        row.innerHTML = `
+
+            <td
+                colspan="6"
+                class="empty-transactions"
+            >
+                لا توجد عمليات مسجلة حاليًا.
+            </td>
+
+        `;
+
+
+        table.appendChild(row);
+
+        return;
+
+    }
+
+
+    const transactions =
+        [...company.transactions]
+        .sort(function(a, b) {
+
+            return b.date.localeCompare(a.date);
+
+        });
+
+
+    transactions.forEach(function(transaction) {
+
+        const row =
+            document.createElement("tr");
+
+
+        const typeText =
+            transaction.type === "purchase"
+                ? "شراء"
+                : "سداد";
+
+
+        const typeClass =
+            transaction.type === "purchase"
+                ? "purchase-text"
+                : "payment-text";
+
+
+        row.innerHTML = `
+
+            <td>
+                ${escapeHtml(transaction.date || "—")}
+            </td>
+
+            <td class="${typeClass}">
+                ${typeText}
+            </td>
+
+            <td>
+                ${escapeHtml(transaction.reference || "—")}
+            </td>
+
+            <td>
+                ${escapeHtml(transaction.description || "—")}
+            </td>
+
+            <td>
+                ${Number(transaction.amount || 0).toLocaleString()}
+                ريال
+            </td>
+
+            <td>
+
+                <button
+                    class="delete-button"
+                    onclick="deleteTransaction('${transaction.id}')"
+                >
+                    حذف
+                </button>
+
+            </td>
+
+        `;
+
+
+        table.appendChild(row);
+
+    });
+
+}
+
+
+/* ================================================= */
+/* OPEN TRANSACTION MODAL */
+/* ================================================= */
+
+function openTransactionModal(type) {
+
+    if (currentCompanyIndex === null) {
+
+        alert("يرجى فتح ملف الشركة أولاً.");
+
+        return;
+
+    }
+
+
+    document.getElementById("transactionModal").style.display =
+        "flex";
+
+
+    document.getElementById("transactionType").value =
+        type;
+
+
+    document.getElementById("transactionModalTitle").textContent =
+        type === "purchase"
+            ? "إضافة عملية شراء"
+            : "إضافة عملية سداد";
+
+
+    const today =
+        new Date()
+        .toISOString()
+        .split("T")[0];
+
+
+    document.getElementById("transactionDate").value =
+        today;
+
+
+    document.getElementById("transactionReference").value =
+        "";
+
+
+    document.getElementById("transactionAmount").value =
+        "";
+
+
+    document.getElementById("transactionDescription").value =
+        "";
+
+
+    document.getElementById("transactionAmount").focus();
+
+}
+
+
+/* ================================================= */
+/* CLOSE TRANSACTION MODAL */
+/* ================================================= */
+
+function closeTransactionModal() {
+
+    document.getElementById("transactionModal").style.display =
+        "none";
+
+}
+
+
+/* ================================================= */
+/* SAVE TRANSACTION */
+/* ================================================= */
+
+function saveTransaction() {
+
+    if (currentCompanyIndex === null) {
+
+        return;
+
+    }
+
+
+    const date =
+        document.getElementById("transactionDate").value;
+
+
+    const type =
+        document.getElementById("transactionType").value;
+
+
+    const reference =
+        document.getElementById("transactionReference")
+        .value
+        .trim();
+
+
+    const amount =
+        Number(
+            document.getElementById("transactionAmount").value
+        );
+
+
+    const description =
+        document.getElementById("transactionDescription")
+        .value
+        .trim();
+
+
+    if (!date) {
+
+        alert("يرجى تحديد تاريخ العملية.");
+
+        return;
+
+    }
+
+
+    if (!amount || amount <= 0) {
+
+        alert("يرجى إدخال مبلغ صحيح.");
+
+        document.getElementById("transactionAmount").focus();
+
+        return;
+
+    }
+
+
+    const companies =
+        JSON.parse(
+            localStorage.getItem("mahimmCompanies")
+        ) || [];
+
+
+    const company =
+        companies[currentCompanyIndex];
+
+
+    if (!company) {
+
+        alert("تعذر العثور على الشركة.");
+
+        return;
+
+    }
+
+
+    ensureTransactions(company);
+
+
+    const transaction = {
+
+        id:
+            Date.now().toString() +
+            Math.random().toString(36).substring(2, 8),
+
+        date: date,
+
+        type: type,
+
+        reference: reference,
+
+        description: description,
+
+        amount: amount
+
+    };
+
+
+    company.transactions.push(transaction);
+
+
+    calculateCompanyTotals(company);
+
+
+    localStorage.setItem(
+        "mahimmCompanies",
+        JSON.stringify(companies)
+    );
+
+
+    closeTransactionModal();
+
+
+    openCompany(currentCompanyIndex);
+
+
+    alert("تم حفظ العملية بنجاح.");
+
+}
+
+
+/* ================================================= */
+/* DELETE TRANSACTION */
+/* ================================================= */
+
+function deleteTransaction(transactionId) {
+
+    if (currentCompanyIndex === null) {
+
+        return;
+
+    }
+
+
+    const confirmDelete =
+        confirm(
+            "هل أنت متأكد من حذف هذه العملية؟"
+        );
+
+
+    if (!confirmDelete) {
+
+        return;
+
+    }
+
+
+    const companies =
+        JSON.parse(
+            localStorage.getItem("mahimmCompanies")
+        ) || [];
+
+
+    const company =
+        companies[currentCompanyIndex];
+
+
+    if (!company) {
+
+        return;
+
+    }
+
+
+    ensureTransactions(company);
+
+
+    company.transactions =
+        company.transactions.filter(function(transaction) {
+
+            return transaction.id !== transactionId;
+
+        });
+
+
+    calculateCompanyTotals(company);
+
+
+    localStorage.setItem(
+        "mahimmCompanies",
+        JSON.stringify(companies)
+    );
+
+
+    openCompany(currentCompanyIndex);
 
 }
 
@@ -1420,6 +2209,12 @@ function logout() {
     localStorage.removeItem(
         "mahimmLoggedIn"
     );
+
+
+    currentCompanyIndex = null;
+
+
+    closeTransactionModal();
 
 
     document.getElementById("systemPage").style.display =
